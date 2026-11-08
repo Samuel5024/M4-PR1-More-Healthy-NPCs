@@ -4,41 +4,55 @@ using UnityEngine;
 
 public class SingleHitDrainHealth : MonoBehaviour, IHealth
 {
+    [SerializeField] private float maxHealth = 100f;
     [SerializeField] private int healthLostInOneHit = 2;
     [SerializeField] private float timeHealthDrainsFor = 5f;
-    
-    private int hitsRemaining;
-    private bool canHealthDrain = true;
+
+    private float currentHealth;
 
     public event Action<float> OnHPPctChanged = delegate(float f) { };
     public event Action OnDied = delegate { };
 
     public float CurrentHpPct
     {
-        get { return (float) hitsRemaining / (float) healthLostInOneHit; }
+        get { return currentHealth / maxHealth; }
     }
 
     private void Start()
     {
-        hitsRemaining = healthLostInOneHit;
+        currentHealth = maxHealth;
     }
 
     public void TakeDamage(int amount)
     {
-        if (canHealthDrain)
-        {
-            StartCoroutine(DrainHealthOverTime());
-            OnHPPctChanged(CurrentHpPct);
-        }
+        if (currentHealth <= 0) return;
 
-        if (hitsRemaining <= 0)
-        {
-            OnDied();
-        }
+        StartCoroutine(DrainHealthOverTime());
     }
 
     private IEnumerator DrainHealthOverTime()
     {
-        // put health drain logic here?
+        float elapsedTime = 0f;
+        float damagePerSecond = healthLostInOneHit / timeHealthDrainsFor;
+        
+        while (elapsedTime < timeHealthDrainsFor && currentHealth > 0)
+        {
+            float timeStep = Time.deltaTime;
+            elapsedTime += timeStep;
+
+            currentHealth -= damagePerSecond * timeStep;
+
+            if (currentHealth < 0) currentHealth = 0;
+
+            OnHPPctChanged(CurrentHpPct);
+
+            if (currentHealth <= 0)
+            {
+                OnDied();
+                yield break;
+            }
+
+            yield return null;
+        }
     }
 }
