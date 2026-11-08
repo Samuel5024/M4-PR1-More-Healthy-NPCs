@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 3664794067786420876}
   - component: {fileID: 7636192064366064930}
   - component: {fileID: 338591804903588699}
-  - component: {fileID: 9213164697165499782}
   - component: {fileID: 1459878150027376505}
+  - component: {fileID: 6331733168150607603}
   m_Layer: 0
   m_Name: NPC (1)
   m_TagString: Untagged
@@ -126,19 +126,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 4
   turnSpeed: 90
---- !u!114 &9213164697165499782
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1603664800873110442}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b582d81ad77ca64409f367841a7038db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startingHealth: 100
 --- !u!114 &1459878150027376505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,6 +139,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathParticlePrefab: {fileID: 5139466195945210429, guid: dee25ef51a9b5ce4d97fd655c61cd272, type: 3}
+--- !u!114 &6331733168150607603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603664800873110442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 108b8367c712c4943ba503504821e369, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  healthLostInOneHit: 15
+  timeHealthDrainsFor: 5
 --- !u!1 &1805639396950941053
 GameObject:
   m_ObjectHideFlags: 0

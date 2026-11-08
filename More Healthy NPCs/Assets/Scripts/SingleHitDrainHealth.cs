@@ -49,6 +49,7 @@ public class SingleHitDrainHealth : MonoBehaviour, IHealth
             if (currentHealth <= 0)
             {
                 OnDied();
+                GameObject.Destroy(this.gameObject);
                 yield break;
             }
 
