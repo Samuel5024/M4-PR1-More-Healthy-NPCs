@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class NumberOfHitsHealth : MonoBehaviour
+public class NumberOfHitsHealth : MonoBehaviour, IHealth
 {
     [SerializeField] private int healthInHits = 5;
     [SerializeField] private float invulnerabilityTimeAfterEachHit = 5f;
