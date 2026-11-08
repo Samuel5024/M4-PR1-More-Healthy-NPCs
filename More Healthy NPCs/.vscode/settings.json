@@ -52,5 +52,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Healthy NPCs.sln"
+    "dotnet.defaultSolution": "More Healthy NPCs.sln"
 }
